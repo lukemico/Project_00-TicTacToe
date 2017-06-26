@@ -1,43 +1,43 @@
 $(document).ready(function() {
-
   $(function() {
-
     var player = 1;
-    var table = $('table');
-    var messages = $('.messages');
-    var turn = $('.turn');
+    var table = $("table");
+    var message = $(".message");
+    var turn = $(".turn");
     displayNextPlayer(turn, player);
 
-    $('td').click(function() {
+    $("td").click(function() {
       td = $(this);
       var state = getState(td);
-      if(!state) {
+      if (!state) {
         var pattern = definePatternForCurrentPlayer(player);
         changeState(td, pattern);
-        if(checkIfPlayerWon(table, pattern)) {
-          window.alert('Player '+player+' has wins! DONUTS for everyone...');
-          // messages.html('Player '+player+' has won.');
-          turn.html('');
+        if (checkIfPlayerWon(table, pattern)) {
+          window.alert(
+            "Player " + player + " has wins! DONUTS for everyone..."
+          );
+          // message.html('Player '+player+' has won.');
+          turn.html("");
         } else {
           player = setNextPlayer(player);
           displayNextPlayer(turn, player);
         }
       } else {
         window.alert("Duh! This box is already checked.");
-        // messages.html('This box is already checked.');
+        // message.html('This box is already checked.');
       }
     });
 
-    $('.reset').click(function() {
+    $(".reset").click(function() {
       player = 1;
-      messages.html('');
+      message.html("");
       reset(table);
       displayNextPlayer(turn, player);
     });
   });
 
   function getState(td) {
-    if(td.hasClass('cross') || td.hasClass('circle')) {
+    if (td.hasClass("cross") || td.hasClass("circle")) {
       return 1;
     } else {
       return 0;
@@ -49,42 +49,74 @@ $(document).ready(function() {
   }
 
   function definePatternForCurrentPlayer(player) {
-    if(player === 1) {
-      return 'cross';
+    if (player === 1) {
+      return "cross";
     } else {
-      return 'circle';
+      return "circle";
     }
   }
 
   function setNextPlayer(player) {
-    if(player === 1) {
-      return player = 2;
+    if (player === 1) {
+      return (player = 2);
     } else {
-      return player = 1;
+      return (player = 1);
     }
   }
 
   function displayNextPlayer(turn, player) {
-    turn.html('PLAYER : '+player);
+    turn.html("PLAYER : " + player);
   }
 
   function checkIfPlayerWon(table, pattern) {
     var won = 0;
-    if(table.find('.item1').hasClass(pattern) && table.find('.item2').hasClass(pattern) && table.find('.item3').hasClass(pattern)) {
+    if (
+      table.find(".item1").hasClass(pattern) &&
+      table.find(".item2").hasClass(pattern) &&
+      table.find(".item3").hasClass(pattern)
+    ) {
       won = 1;
-    } else if (table.find('.item1').hasClass(pattern) && table.find('.item4').hasClass(pattern) && table.find('.item7').hasClass(pattern)) {
+    } else if (
+      table.find(".item1").hasClass(pattern) &&
+      table.find(".item4").hasClass(pattern) &&
+      table.find(".item7").hasClass(pattern)
+    ) {
       won = 1;
-    } else if (table.find('.item1').hasClass(pattern) && table.find('.item5').hasClass(pattern) && table.find('.item9').hasClass(pattern)) {
+    } else if (
+      table.find(".item1").hasClass(pattern) &&
+      table.find(".item5").hasClass(pattern) &&
+      table.find(".item9").hasClass(pattern)
+    ) {
       won = 1;
-    } else if (table.find('.item4').hasClass(pattern) && table.find('.item5').hasClass(pattern) && table.find('.item6').hasClass(pattern)) {
+    } else if (
+      table.find(".item4").hasClass(pattern) &&
+      table.find(".item5").hasClass(pattern) &&
+      table.find(".item6").hasClass(pattern)
+    ) {
       won = 1;
-    } else if (table.find('.item7').hasClass(pattern) && table.find('.item8').hasClass(pattern) && table.find('.item9').hasClass(pattern)) {
+    } else if (
+      table.find(".item7").hasClass(pattern) &&
+      table.find(".item8").hasClass(pattern) &&
+      table.find(".item9").hasClass(pattern)
+    ) {
       won = 1;
-    } else if (table.find('.item2').hasClass(pattern) && table.find('.item5').hasClass(pattern) && table.find('.item8').hasClass(pattern)) {
+    } else if (
+      table.find(".item2").hasClass(pattern) &&
+      table.find(".item5").hasClass(pattern) &&
+      table.find(".item8").hasClass(pattern)
+    ) {
       won = 1;
-    } else if (table.find('.item3').hasClass(pattern) && table.find('.item6').hasClass(pattern) && table.find('.item9').hasClass(pattern)) {
+    } else if (
+      table.find(".item3").hasClass(pattern) &&
+      table.find(".item6").hasClass(pattern) &&
+      table.find(".item9").hasClass(pattern)
+    ) {
       won = 1;
-    } else if (table.find('.item3').hasClass(pattern) && table.find('.item5').hasClass(pattern) && table.find('.item7').hasClass(pattern)) {
+    } else if (
+      table.find(".item3").hasClass(pattern) &&
+      table.find(".item5").hasClass(pattern) &&
+      table.find(".item7").hasClass(pattern)
+    ) {
       won = 1;
     }
     return won;
@@ -92,91 +124,11 @@ $(document).ready(function() {
 
   function reset(table) {
     console.log("jkhfjhf");
-    table.find('td').each(function() {
-      $(this).removeClass('cross').removeClass('circle');
+    table.find("td").each(function() {
+      $(this).removeClass("cross").removeClass("circle");
     });
   }
-
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //
 //
@@ -284,8 +236,6 @@ $(document).ready(function() {
 //     reset();
 //   }
 // });
-
-
 
 //
 // function Cell(){
